@@ -1,6 +1,6 @@
 {
-    "good_path": "/home/dicelabs/WorkingDir/src/go/videos/good_vids/human is measuring with a measure tape_20240914_184933.mp4",
-    "clas": "human is measuring with a measure tape",
-    "prob": 0.8965625762939453,
-    "timestamp": "20240914_184933"
+    "good_path": "/home/dicelabs/UnitreeGO1-HRI-BIM/src/go/videos/good_vids/human is measuring_20240924_175327.mp4",
+    "clas": "human is measuring",
+    "prob": 0.7184069156646729,
+    "timestamp": "20240924_175327"
 }

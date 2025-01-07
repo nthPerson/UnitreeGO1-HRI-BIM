@@ -1,5 +1,8 @@
 build
 
+# keeps API keys and other environment variables from being pushed to GitHub
+.env
+
 *.o
 .vscode
 *.pt

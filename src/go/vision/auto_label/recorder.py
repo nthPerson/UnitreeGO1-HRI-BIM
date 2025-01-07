@@ -37,7 +37,7 @@ class VideoRecorder:
         else:
             return os.path.join(self.dir_context.outputs_dir, f"{video_filename}.mp4")
 
-    def capture_frames(self, cap: cv2.VideoCapture, out_video: cv2.VideoWriter, filename, max_frames=16):
+    def capture_frames(self, cap: cv2.VideoCapture, out_video: cv2.VideoWriter, filename, max_frames=64):
         global is_recording
         counter = 0
         while is_recording[0]:

@@ -5,7 +5,7 @@ from speak_clnt import speak
 import os
 import sys
 import threading
-from go_clnt import dance, stop_dance
+from go_clnt import dance, stop_dance, wonderwall_dance
 import time
 from explain_clnt import explain
 import os
@@ -20,7 +20,7 @@ class ListenProcessor():
     def __init__(self):
         self.should_speak = Value('i', 1) 
         #TODO fix imports for more modularity
-        self.dir_context = DirectoryContext(base_dir=f"{Path.home()}/WorkingDir/src/go/videos")
+        self.dir_context = DirectoryContext(base_dir=f"{Path.home()}/UnitreeGO1-HRI-BIM/src/go/videos")
     def read_variables(self):
         file_path = os.path.join(self.dir_context.inference_data_dir, "inference_variables.json")
         with open(file_path, 'r') as f:
@@ -70,7 +70,7 @@ class ListenProcessor():
                     stop_dance()
                     speak("I hope you enjoyed my dance!")
 
-                if "aztec" in text or "fantastic" in text or "tech" in text or "as" in text or "attack" in text:
+                if "aztec" in text or "fantastic" in text or "tech" in text or "as" in text or "attack" in text or "hey" in text:
                     print("Wake word detected! Listening for command...")
                     try:
                         speak("Yes?")
@@ -95,6 +95,10 @@ class ListenProcessor():
                         
                         command = recognizer.recognize_google(audio).lower()
                         self.text = command
+                        if "sad" in command or "tough" in command or "bad" in command:
+                            speak("Ok, anyways here is wonderwall")
+                            os.system("python3 /home/dicelabs/UnitreeGO1-HRI-BIM/src/go/speech/Wonderwall.py")
+                            wonderwall_dance()
                         if "dance" in command:
                             speak("I'm going to dance!")
                             dance()

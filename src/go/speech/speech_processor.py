@@ -4,6 +4,10 @@ import time
 import pygame
 import subprocess
 import requests
+
+# load API key from .env file
+from dotenv import load_dotenv
+load_dotenv()
 ############################################################
 """
     String Literals For Bash Handling
@@ -20,8 +24,8 @@ BASH_ERROR          = "Error running Bash script:"
 """
 
 #TODO fix imports for more modularity
-TRIGGER_WAV_SCRIPT = "/home/dicelabs/WorkingDir/src/go/speech/dog_trigger_speech.sh"
-SEND_WAV_SCRIPT = "/home/dicelabs/WorkingDir/src/go/speech/dog_send_speech.sh"
+TRIGGER_WAV_SCRIPT = "/home/dicelabs/UnitreeGO1-HRI-BIM/src/go/speech/dog_trigger_speech.sh"
+SEND_WAV_SCRIPT = "/home/dicelabs/UnitreeGO1-HRI-BIM/src/go/speech/dog_send_speech.sh"
 ############################################################
 
 def send_signal_to_dog(filename: str):
@@ -47,16 +51,18 @@ def send_temp_wav_file_to_dog():
     Then to send to the dog this file is referenced in the bash script to scp over to the dog's computer 
 """
 #TODO fix imports for more modularity
-TEMPORARY_WAV_FILE = '/home/dicelabs/WorkingDir/src/go/speech/waves/temp.wav'
+TEMPORARY_WAV_FILE = '/home/dicelabs/UnitreeGO1-HRI-BIM/src/go/speech/waves/temp.wav'
 ############################################################
 
 class SpeechProcessor:
     def __init__(self):
-        self.api_key = "a457223c150f9c9b74ca309a483c0fd1" # Hardcoded API key
+        self.api_key = os.getenv("SPEECH_KEY")
+        if not self.api_key:
+            raise ValueError("SPEECH_KEY is not configured in the environment")
         self.voice_id = "NFG5qt843uXKj4pFvR7C" # Specify the correct voice ID
         self.base_url = "https://api.elevenlabs.io/v1/text-to-speech/"
         #TODO fix imports for more modularity
-        self.output_dir = "/home/dicelabs/WorkingDir/src/go/speech/waves"
+        self.output_dir = "/home/dicelabs/UnitreeGO1-HRI-BIM/src/go/speech/waves"
     def speak(self, phrase: str, file: str = "activity.wav"):
         url = self.base_url + self.voice_id
         file_path = os.path.join(self.output_dir, file) 

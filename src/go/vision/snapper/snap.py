@@ -11,7 +11,7 @@ class Snapper:
 
     def get_frame(self):
             #TODO fix imports for more modularity
-            CURRENT_FRAME = "/home/dicelabs/WorkingDir/src/go/vision/snapper/current_frame.jpg"
+            CURRENT_FRAME = "/home/dicelabs/UnitreeGO1-HRI-BIM/src/go/vision/snapper/current_frame.jpg"
             ret, frame = self.cam.read()
             if not ret:
                 raise Exception("Failed to read frame from stream.")

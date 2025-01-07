@@ -50,6 +50,12 @@ def dance():
                     function="dance", 
                     args={}
     ))
+def wonderwall_dance():
+    call_service(host=DOG_IP, port=ServicePorts[ServiceNames.GO], 
+                request=GenericRequest(
+                    function="wonderwall_dance", 
+                    args={}
+    ))
 def stop_dance():
     call_service(host=DOG_IP, port=ServicePorts[ServiceNames.GO],
                  request=GenericRequest(function="stop_dance", args={}))

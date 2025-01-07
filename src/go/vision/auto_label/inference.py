@@ -6,7 +6,7 @@ from decord import VideoReader
 import shutil
 from speak_clnt import speak
 
-
+from is_recording import is_recording
 from explain_clnt import explain
 
 import json
@@ -19,17 +19,23 @@ class Inferencer:
         #Inference classes, change as seen fit
         self.classes = [
             'human is hammering',
-            'human is measuring with a measure tape',
+            'human is measuring',
             'human is stacking boxes',
             'human is clipping',
             'human is cutting',
             'human is drilling',
             'human is screwdriving',
             'an empty room',
+            'human is mixing cement',
+            'human is painting',
+            'human is sawing',
+            'human is welding',
+            'human is using a vacuum cleaner',
             'human is doing an unsure activity'
         ]
     def infer_activity(self, video_path, start_time=0, stop_time=4):
         """ Infers the human activity in a video segment. """
+        global is_recording
         try:
             
             inputs = self.analyze_video(video_path, start_time, stop_time)
@@ -44,8 +50,8 @@ class Inferencer:
             print(f"Detected activity: {activity}")
             should_speak = get_should_speak()
             print(f"Should speak: {should_speak}")
-            if prob > 0.7:
-                if should_speak == 1:
+            if prob > 0.76:
+                if should_speak == 1 and is_recording[0]:
                     speak(activity)
         return activity, prob
 

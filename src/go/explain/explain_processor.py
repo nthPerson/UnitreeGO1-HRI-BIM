@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-
+""" Handles the processing logic for the EXPLAIN service. """
 import cv2
 from openai import OpenAI
 import base64
 import os
 import re
 from speak_clnt import speak
-""" Handles the processing logic for the EXPLAIN service. """
+
+# load API key from .env file
+from dotenv import load_dotenv
+load_dotenv()
 
 class ExplainProcessor:
         
@@ -16,7 +19,9 @@ class ExplainProcessor:
         # self.model_name = "gpt-4o"
         self.frames_to_extract = 5  # number of frames to use for explanation
         # initialize the ExplainProcessor with an OpenAI API key
-        self.api_key="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"
+        self.api_key = os.getenv("EXPLAIN_KEY")
+        if not self.api_key:
+            raise ValueError("EXPLAIN_KEY is not configured in the environment")
         self.use_speak_service = True  # set to False to disable the speak service
         
     def explain(self, video_path: str, activity: str, probability: float, timestamp: str, dir_context):
