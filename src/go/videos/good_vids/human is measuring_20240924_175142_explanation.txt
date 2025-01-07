@@ -1,0 +1,1 @@
+I inferred the action as measuring due to the subject's use of a tape measure, posture, and consistent frame behavior, with a confidence probability of 0.97.

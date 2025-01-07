@@ -1,0 +1,1 @@
+I inferred human activity through the person's posture and use of a measuring tool, indicating measurement tasks with a confidence probability of 0.83.

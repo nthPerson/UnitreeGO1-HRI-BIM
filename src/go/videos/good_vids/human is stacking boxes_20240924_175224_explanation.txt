@@ -1,0 +1,1 @@
+I observed repetitive actions of lifting and placing boxes, indicative of stacking behavior, leading to an inference confidence of 0.83.
