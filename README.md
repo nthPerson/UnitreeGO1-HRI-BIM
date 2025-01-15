@@ -1,5 +1,5 @@
 # Unitree Robot Control Framework for Human Activity Recognition
-Overview
+Overview:
 This project, developed by the team of researchers at SDSU's DiCE Lab, introduces a high-level control framework for Unitree quadruped robots. Specifically designed to facilitate integration with Building Information Models (BIM) and Unity-based simulations, our project includes an example configuration that performs human activity recognition (HAR) in a construction environment. The framework simplifies mission planning and enhances the adaptability of Unitree robots for various applications. The Python backend provides modular, client-server-based functionality to facilitate communication between robots, edge devices, sensors, and APIs, supporting rapid deployment for non-experts in robotics.
 
 Key Features:
